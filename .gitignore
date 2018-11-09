@@ -1,0 +1,7 @@
+__pycache__/
+.idea/
+*.log
+local_settings.py
+db.sqlite3
+pip-log.txt
+pip-delete-this-directory.txt
