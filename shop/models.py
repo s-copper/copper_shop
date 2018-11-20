@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=200, db_index=True)
+    name = models.CharField(max_length=200, db_index=True, help_text='Название категории', verbose_name='Название')
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
 
     class Meta:
@@ -32,6 +32,7 @@ class Product(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name_plural = 'Продукты'
         index_together = [
             ['id', 'slug']
         ]

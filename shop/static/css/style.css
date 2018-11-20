@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=cyrillic'
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=cyrillic';
 body{
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
@@ -10,7 +10,7 @@ body{
   text-transform: uppercase;
 }
 .top-bl{
-  background: #bebebe;
+  background-image: url("../img/fon2_.jpg");
   padding: 15px;
 }
 .top-bl .cart{
@@ -21,6 +21,7 @@ body{
   margin: 0;
   padding: 0;
   margin-top: 20px;
+  background-image: url("../img/foooon.jpg");
 }
 #sidebar ul li{
   padding: 5px 10px;

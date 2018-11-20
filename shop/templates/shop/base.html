@@ -11,16 +11,25 @@
 <body>
     <section id="header">
         <div class="top container">
-            Онлайн-магазин "Copper"
+            Онлайн магазин "Copper"
         </div>
         <div class="top-bl">
             <div class="container">
-                <div class="cart">Ваша корзина пуста</div>
+                <div class="cart">
+                    {% with total_items=cart|length %}
+                        {% if cart|length > 0 %}
+                        <a href="{% url "cart:CartDetail" %}">
+                            <span class="glyphicon glyphicon-alert"></span> : {{ cart.get_total_price }} руб.
+                        </a>
+                        {% else %}Корзина пуста
+                        {% endif %}
+                    {% endwith %}
+                </div>
             </div>
         </div>
     </section>
-    <section id="content row" class="container">
-        {% block content %}{% endblock %}
+    <section id="content" class="container row">
+        {% block content%}{% endblock %}
     </section>
 </body>
 </html>

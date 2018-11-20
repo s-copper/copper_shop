@@ -1,0 +1,54 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    Ваша корзина
+{% endblock %}
+{% block content %}
+    <h1>Ваша корзина</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Изображение</th>
+                <th>Продукт</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Полная стоимость</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <tr>
+                        <td>
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{{ product.image.url }}" width="80" height="80" alt="" />
+                            </a>
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>
+                            <form action="{% url "cart:CartAdd" product.id %}" method="post" class="add">
+                                {{ item.update_quantity_form.quantity }}
+                                {{ item.update_quantity_form.update }}
+                                {% csrf_token %}
+                                <input type="submit" value="Изменить">
+                            </form>
+                        </td>
+                        <td class="num">{{ item.price }} руб.</td>
+                        <td class="num">{{ item.total_price }} руб.</td>
+                         <td><a href="{% url "cart:CartRemove" product.id %}">Удалить</a></td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+            <tr class="total">
+                <td>Всего</td>
+                <td colspan="4"></td>
+                <td class="num">{{ cart.get_total_price }} руб.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url "shop:ProductList" %}" class="btn">Продолжить покупки</a>
+        <a href="#">Оформить покупки</a>
+    </p>
+{% endblock %}
