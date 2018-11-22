@@ -16,11 +16,6 @@ class Migration(migrations.Migration):
             name='product',
             options={'ordering': ['name'], 'verbose_name_plural': 'Продукты'},
         ),
-        migrations.RenameField(
-            model_name='product',
-            old_name='update',
-            new_name='updated',
-        ),
         migrations.AlterField(
             model_name='category',
             name='name',

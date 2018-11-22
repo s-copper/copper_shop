@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('stock', models.PositiveIntegerField(verbose_name='На складе')),
                 ('available', models.BooleanField(default=True, verbose_name='Доступен')),
                 ('created', models.DateTimeField(auto_now_add=True)),
-                ('update', models.DateTimeField(auto_now=True)),
+                ('updated', models.DateTimeField(auto_now=True)),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products', to='shop.Category', verbose_name='Категория')),
             ],
             options={
