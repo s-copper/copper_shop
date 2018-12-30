@@ -14,7 +14,7 @@ class Order(models.Model):
     paid = models.BooleanField(verbose_name='Оплачен', default=False)
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ['-created']
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
 

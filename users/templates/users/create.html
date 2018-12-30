@@ -1,0 +1,10 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+    <h1>Регистрация</h1>
+    <div class="col-sm-4">
+        <form action="." method="post">
+            {{ form.as_p }}
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+{% endblock %}

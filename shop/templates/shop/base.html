@@ -12,7 +12,7 @@
 <body>
     <section id="header">
         <div class="top container">
-            Онлайн магазин "Copper"
+            <a href="{% url 'shop:ProductList' %}" class="shop_title">Онлайн магазин "Copper"</a>
         </div>
         <div class="top-bl">
             <div class="container">
@@ -28,6 +28,9 @@
                     {% endwith %}
                 </div>
             </div>
+        </div>
+        <div class="top-left">
+            <a href="{% url 'users:create_user' %}">Личный кабинет</a>
         </div>
     </section>
     <section id="content" class="container row">
