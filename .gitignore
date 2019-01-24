@@ -1,6 +1,7 @@
 __pycache__/
 .idea/
 *.log
+test*.*
 local_settings.py
 db.sqlite3
 pip-log.txt

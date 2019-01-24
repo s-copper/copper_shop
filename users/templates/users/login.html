@@ -1,0 +1,14 @@
+{% extends 'shop/base.html' %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+    <h3>Вход</h3>
+    <div class="col-sm-4">
+        <form class="order-form" action="." method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Войти">
+        </form>
+    </div>
+
+{% endblock %}

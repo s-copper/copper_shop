@@ -1,0 +1,12 @@
+{% extends 'shop/base.html' %}
+{% block title %}Личный кабинет{% endblock %}
+{% block content %}
+    <h3>Личный кабинет</h3>
+    <div class="col-sm-4">
+        <ul>
+            <li>Имя: {{ user.first_name }}</li>
+            <li>Фамилия: {{ user.last_name }}</li>
+            <li>День рождения: {{ user.birthday }}</li>
+        </ul>
+    </div>
+{% endblock %}

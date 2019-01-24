@@ -10,7 +10,7 @@ body{
   text-transform: uppercase;
 }
 .top-bl{
-  background-image: url("../img/fon2_.jpg");
+  background: #f8efc0;
   padding: 15px;
 }
 .top-bl .cart{
@@ -21,13 +21,13 @@ body{
   margin: 0;
   padding: 0;
   margin-top: 20px;
-  background-image: url("../img/foooon.jpg");
+  background-color: #ddffdd;
 }
 #sidebar ul li{
   padding: 5px 10px;
 }
 #sidebar ul li.selected{
-  background: #0095ff;
+  background: #79aec8;
   color: white;
   border-radius: 3px;
 }
@@ -112,4 +112,16 @@ a.shop_title{
 }
 a.shop_title:hover{
   color: indianred;
+}
+
+.navbar-brand {
+  padding-left: -5px; /* firefox bug fix */
+  font-size: 27px !important;
+  color: #0f0f0f !important;
+}
+.navbar-left>img {
+  height: 80%;
+  padding-top: 10px; /* firefox bug fix */
+  width: 80%;
+  padding-right: -5px;
 }
