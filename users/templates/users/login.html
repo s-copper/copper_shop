@@ -6,9 +6,8 @@
         <form class="order-form" action="." method="post">
             {% csrf_token %}
             {{ form.as_p }}
-
             <input type="submit" value="Войти">
         </form>
+    <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
     </div>
-
 {% endblock %}

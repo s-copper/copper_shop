@@ -1,7 +1,7 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block title %}
-    {% if categories %}{{ category.name }}{% else %}Copper
+    {% if category %}{{ category.name }}{% else %}Copper
     {% endif %}
 {% endblock %}
 {% block content %}

@@ -1,0 +1,23 @@
+{% extends 'shop/base.html' %}
+{% block title %}Редактирование профиля{% endblock %}
+{% block content %}
+    <h3>Редактирование профиля</h3>
+    <p><a href="{% url 'users:profile' user.pk %}">Личный кабинет</a></p>
+    <div class="col-sm-10">
+        <form class="order-form" action="." method="post">
+            <div class="col-sm-5">
+                <p>Личные данные</p>
+                {{ form1.as_p }}
+            </div>
+            <div class="col-sm-5">
+                <p>Адрес</p>
+                {{ form2.as_p }}
+            </div>
+            {% csrf_token %}
+            <input type="submit" value="Сохранить">
+        </form>
+        {% if success %}
+            <p>Профиль изменен!</p>
+        {% endif %}
+    </div>
+{% endblock %}

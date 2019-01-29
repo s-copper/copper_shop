@@ -8,5 +8,18 @@
             <li>Фамилия: {{ user.last_name }}</li>
             <li>День рождения: {{ user.birthday }}</li>
         </ul>
+        <h4>Адрес</h4>
+        <ul>
+            <li>Город: {{ user.useraddress.city }}</li>
+        </ul>
+        <a href="{% url 'users:edit_profile' %}">
+            <input type="button" value="Редактировать">
+        </a>
+    </div>
+    <div class="col-sm-4">
+        <ul>
+            <li><a href="{% url 'users:change_password' %}">Изменить пароль</a></li>
+            <li><a href="{% url 'users:change_email' %}">Изменить email</a></li>
+        </ul>
     </div>
 {% endblock %}

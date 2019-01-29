@@ -23,6 +23,8 @@ class Product(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название')
     slug = models.SlugField(max_length=200, db_index=True)
     image = models.ImageField(upload_to='products/%Y/%m/%d/', blank=True, verbose_name='Изображение')
+    author = models.CharField(max_length=300, blank=True, verbose_name='Автор')
+    publish_year = models.PositiveIntegerField(verbose_name='Год издания')
     description = models.TextField(blank=True, verbose_name='Описание')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     stock = models.PositiveIntegerField(verbose_name='На складе')
