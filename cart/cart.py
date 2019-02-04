@@ -4,6 +4,7 @@ from shop.models import Product
 
 
 class Cart:
+
     def __init__(self, request):
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
@@ -51,6 +52,13 @@ class Cart:
             total += val['total_price']
         return total
         # return sum(Decimal(val['price']) * val['quantity'] for val in self.cart.values())
+
+    def get_total_price_view(self):
+        totalissshee = float()
+        for product_id, value in self.cart.items():
+            price = Decimal(value['price'])
+            totalissshee += float(price * value['quantity'])
+        return totalissshee
 
     def clear(self):
         del self.session[settings.CART_SESSION_ID]

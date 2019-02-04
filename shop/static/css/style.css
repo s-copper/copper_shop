@@ -1,7 +1,31 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=cyrillic';
-body{
-  font-size: 15px;
-  font-family: 'Open Sans', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  font-size: 14px;
+  font-family: 'Laksaman', sans-serif;
+}
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #adadad !important;
+}
+.footer-fix {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #d3d3d3 !important;
+  font-size: 12px;
+  padding: 10px 5px 0px 5px;
 }
 .top{
   padding: 20px 0;
@@ -16,39 +40,65 @@ body{
 .top-bl .cart{
   float: right;
 }
+#main {
+  border-left: 1px solid lightgrey;
+  height: 100%;
+}
 #sidebar ul{
   list-style: none;
   margin: 0;
   padding: 0;
   margin-top: 20px;
-  background-color: #ddffdd;
+  background-color: whitesmoke;
 }
 #sidebar ul li{
   padding: 5px 10px;
 }
-#sidebar ul li.selected{
-  background: #79aec8;
-  color: white;
-  border-radius: 3px;
+.nav-stacked li{
+  margin: 0 0 0 0;
 }
-#sidebar ul li.selected a{
+.nav-stacked li.selected{
+  background: lightgrey;
   color: white;
+}
+.nav-stacked li.selected a{
+  color: black !important;
+}
+.nav-stacked li a:hover{
+  text-decoration: none;
+  color: grey !important;
+}
+#sidebar ul li a:link{
+  color: black;
+}
+#sidebar ul li a:visited{
+  color: black;
 }
 .items{
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .item{
   text-align: center;
-  margin-bottom: 30px;
+  margin: 0 0 25px 0;
+  font-family: Arial;
+  font-size: 13px;
 }
 .item a img{
-  margin-bottom: 15px;
+  margin: 0 0 10px 0px;
+}
+.item a:hover img{
+  border: 1px solid grey;
+  text-decoration: none;
+}
+.item a img{
+  border: 1px solid white;
 }
 .product-detail{
   margin-top: 40px;
 }
 .price{
-  font-weight: 600;
+  /*font-weight: 600;*/
   font-size: 20px;
 }
 .product-detail h2{
@@ -64,12 +114,12 @@ form.add label{
   padding: 5px 10px;
   border-radius: 3px;
 }
-form.add input[type="submit"]{
+button#add-to-cart{
   background: #2a6496;
-  border-radius: 3px;
   border: 0;
-  padding: 5px 10px;
+  padding: 7px 10px;
   color: white;
+  margin: 5px 5px;
 }
 .table-cart{
   width: 100%;
@@ -86,8 +136,8 @@ thead{
   color: white;
 }
 .btn{
-  background: #2a6496;
-  color: white;
+  background: #f2f2f2;
+  color: black;
 }
 .btn-light{
   background: #808080;
@@ -104,24 +154,57 @@ thead{
 }
 .order-form input{
   width: 100%;
+
+  padding: 5px 5px;
+}
+.order-form input[type='submit']{
+  width: 150px;
   padding: 5px 10px;
 }
-a.shop_title{
+a.simple{
   text-decoration: none;
-  color: #843534;
+  color: black;
 }
-a.shop_title:hover{
-  color: indianred;
+a.simple:hover{
+  color: grey;
 }
 
 .navbar-brand {
   padding-left: -5px; /* firefox bug fix */
-  font-size: 27px !important;
+  font-size: 30px !important;
   color: #0f0f0f !important;
+  font-family: Carter One !important;
 }
-.navbar-left>img {
+.navbar-left > img {
   height: 80%;
   padding-top: 10px; /* firefox bug fix */
   width: 80%;
   padding-right: -5px;
+}
+.panel-footer {
+  /*font-size: 13px;*/
+  /*line-height: 1.0;*/
+  /*padding: 20px 15px 5px;*/
+  /*background-color: white;*/
+  /*box-sizing: border-box;*/
+  /*margin-bottom: -5px;*/
+}
+hr {
+  margin: 4px 0 4px 0;
+  color: lightgrey;
+  size: 1px;
+}
+ul.my-footer {
+  padding: 4px;
+}
+ul.my-footer > li {
+  display: inline;
+  margin: 0 10px 0 5px;
+  padding: 3px;
+}
+ul.my-footer > li a{
+  color: #3c3c3c;
+}
+a:hover img.thumbnail {
+  border: 0 solid white;
 }

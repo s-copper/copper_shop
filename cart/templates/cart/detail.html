@@ -22,12 +22,12 @@
                     <tr>
                         <td>
                             <a href="{{ product.get_absolute_url }}">
-                                <img src="{{ product.image.url }}" width="80" height="80" alt="" />
+                                <img src="{{ product.image.url }}" width=auto height="80" alt="" />
                             </a>
                         </td>
                         <td>{{ product.name }}</td>
                         <td>
-                            <form action="{% url "cart:CartAdd" product.id %}" method="post" class="add">
+                            <form action="{% url "cart:cart_change_quantity" product.id %}" method="post" class="add">
                                 {{ item.update_quantity_form.quantity }}
                                 {{ item.update_quantity_form.update }}
                                 {% csrf_token %}
@@ -47,8 +47,9 @@
             </tr>
         </tbody>
     </table>
-    <p class="text-right">
+    <p class="text-right" style="margin-bottom: 70px">
         <a href="{% url "shop:ProductList" %}" class="btn">Продолжить покупки</a>
         <a href="{% url "orders:OrderCreate" %}" class="btn">Оформить покупки</a>
     </p>
 {% endblock %}
+

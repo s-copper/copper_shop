@@ -6,7 +6,9 @@ class Order(models.Model):
     first_name = models.CharField(max_length=50, verbose_name='Имя')
     last_name = models.CharField(max_length=50, verbose_name='Фамилия')
     email = models.EmailField()
-    address = models.CharField(max_length=250, verbose_name='Адрес', help_text='улица, дом, корпус, квартира')
+    address = models.CharField(
+        max_length=250, verbose_name='Адрес', help_text='улица, дом, корпус, квартира', blank=True
+    )
     postal_code = models.CharField(max_length=30, verbose_name='Почтовый код')
     city = models.CharField(max_length=100, verbose_name='Город')
     created = models.DateTimeField(verbose_name='Создан', auto_now_add=True)

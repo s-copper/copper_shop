@@ -5,31 +5,38 @@
     {% endif %}
 {% endblock %}
 {% block content %}
-    <div id="sidebar" class="col-sm-3">
-        <h3>Категории</h3>
-        <ul>
-            <li {% if not category %} class="selected" {% endif %}>
-                <a href="{% url "shop:ProductList" %}">Все</a>
-            </li>
-            {% for c in categories %}
-                <li {% if category.slug == c.slug %} class="selected" {% endif %}>
-                    <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+    <div class="row" style="margin-bottom: 100px">
+        <div class="col-sm-3 col-md-2" style="padding: 0 0 0 0">
+            <h4 class="text-center">Категории</h4>
+            <hr>
+            <ul class="nav nav-stacked">
+                <li {% if not category %} class="selected" {% endif %}>
+                    <a href="{% url "shop:ProductList" %}"><strong>Все</strong></a>
                 </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div id="main" class="product_list col-sm-9">
-        <h2>{% if category %}{{ category.name }}{% else %}Товары{% endif %}</h2>
-        <div class="items row">
-            {% for product in products %}
-                <div class="item col-sm-4">
-                    <a href="{{ product.get_absolute_url }}">
-                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no-img.jpg" %}{% endif %}" class="img-responsive">
-                    </a>
-                    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
-                    {{ product.price }} руб.
-                </div>
-            {% endfor %}
+                {% for c in categories %}
+                    <li {% if category.slug == c.slug %} class="selected" {% endif %}>
+                        <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="main" class="product_list col-sm-10">
+            <h4 style="margin-left: 30px">{% if category %}{{ category.name }}{% else %}Товары{% endif %}</h4>
+            <hr style="margin: 0 -15px 0 -15px">
+            <div class="items row-fluid">
+                {% for product in products %}
+                    <div class="item col-sm-3">
+                        <a href="{{ product.get_absolute_url }}" class="item simple">
+                            <img src="
+                                    {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no-img.jpg" %}{% endif %}"
+                                 height="220">
+                        </a><br>
+                        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+                        {{ product.price }} руб.
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
+

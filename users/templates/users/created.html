@@ -1,6 +1,9 @@
 {% extends 'shop/base.html' %}
 {% block title %}Поздравляем!{% endblock %}
 {% block content %}
-    <h1>Вы успешно зарегистрировались!</h1>
-    <p>Перейти в свой <a href="{% url 'users:profile' user.id %}">Личный кабинет</a></p>
+    <div class="col-sm-4 col-sm-offset-4" style="background: whitesmoke">
+        <h1 class="text-center">Вы успешно зарегистрировались!</h1>
+        <p>Перейти в свой <a href="{% url 'users:profile' user.id %}">Личный кабинет</a></p>
+        <p><a href="{% url 'shop:ProductList' %}">Продолжить покупки</a></p>
+    </div>
 {% endblock %}

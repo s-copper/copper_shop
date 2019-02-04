@@ -2,4 +2,5 @@ from .cart import Cart
 
 
 def cart(request):
-    return {'cart': Cart(request)}
+    if not request.is_ajax():
+        return {'cart': Cart(request)}

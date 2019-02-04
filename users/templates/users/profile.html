@@ -1,25 +1,61 @@
 {% extends 'shop/base.html' %}
 {% block title %}Личный кабинет{% endblock %}
 {% block content %}
-    <h3>Личный кабинет</h3>
-    <div class="col-sm-4">
-        <ul>
-            <li>Имя: {{ user.first_name }}</li>
-            <li>Фамилия: {{ user.last_name }}</li>
-            <li>День рождения: {{ user.birthday }}</li>
-        </ul>
-        <h4>Адрес</h4>
-        <ul>
-            <li>Город: {{ user.useraddress.city }}</li>
-        </ul>
-        <a href="{% url 'users:edit_profile' %}">
-            <input type="button" value="Редактировать">
-        </a>
+    <h3>Кабинет Покупателя</h3>
+    <div class="row">
+        <div class="col-sm-3 col-sm-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Личные данные</strong></div>
+                <table class="table">
+                    <tr>
+                        <td>Имя</td>
+                        <td>{{ user.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Фамилия</td>
+                        <td>{{ user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>День рождения</td>
+                        <td>{{ user.birthday|default_if_none:"" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Адрес</strong></div>
+                <table class="table">
+                    <tr>
+                        <td>Город</td>
+                        <td>{{ user.useraddress.city }}</td>
+                    </tr>
+                    <tr>
+                        <td>Улица</td>
+                        <td>{{ user.useraddress.street }}</td>
+                    </tr>
+                    <tr>
+                        <td>Номер дома</td>
+                        <td>{{ user.useraddress.house_number|default_if_none:"" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Корпус</td>
+                        <td>{{ user.useraddress.building_number|default_if_none:"" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Квартира</td>
+                        <td>{{ user.useraddress.apartment|default_if_none:"" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="col-sm-4">
         <ul>
+            <li><a href="{% url 'users:edit_profile' %}">Редактировать профиль</a></li>
             <li><a href="{% url 'users:change_password' %}">Изменить пароль</a></li>
             <li><a href="{% url 'users:change_email' %}">Изменить email</a></li>
         </ul>
     </div>
 {% endblock %}
+

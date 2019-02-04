@@ -1,13 +1,14 @@
 {% extends 'shop/base.html' %}
 {% block title %}Вход{% endblock %}
 {% block content %}
-    <h3>Вход</h3>
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-sm-offset-4" style="background: whitesmoke; margin-top: 30px; margin-bottom: 15%">
+        <h3 class="text-center"><strong>Вход</strong></h3>
         <form class="order-form" action="." method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Войти">
+            <input type="submit" value="Войти" class="center-block">
         </form>
-    <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
+        <p class="text-right"><a href="{% url 'users:password_reset' %}">Забыли пароль?</a></p>
     </div>
 {% endblock %}
+

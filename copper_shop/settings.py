@@ -25,7 +25,9 @@ SECRET_KEY = 'g2q==%12d&4x9f*q^1=*mo_v71hp(feiyrr+rrg^uv4l@#$fza'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.100.5', '192.168.100.2', '0.0.0.0', '127.0.0.1',
+]
 
 
 # Application definition
@@ -114,7 +116,7 @@ AUTH_USER_MODEL = 'users.MyUser'
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Europe/Minsk'
 

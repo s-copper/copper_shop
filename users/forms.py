@@ -6,6 +6,7 @@ from .models import MyUser, UserAddress
 
 
 class UserCreateForm(forms.ModelForm):
+
     password2 = forms.CharField(widget=forms.PasswordInput(), label="Repeat your password")
 
     class Meta:
@@ -26,6 +27,7 @@ class UserCreateForm(forms.ModelForm):
 
 
 class UserAddressForm(forms.ModelForm):
+
     class Meta:
         model = UserAddress
         fields = ['city', 'street', 'house_number', 'building_number', 'apartment']
@@ -40,6 +42,7 @@ class UserAddressForm(forms.ModelForm):
 
 
 class UserEditForm(forms.ModelForm):
+
     class Meta:
         model = MyUser
         fields = ['first_name', 'last_name', 'birthday']
