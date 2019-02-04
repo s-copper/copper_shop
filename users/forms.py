@@ -1,5 +1,4 @@
 from django import forms
-from django.core.exceptions import NON_FIELD_ERRORS
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.forms.widgets import PasswordInput, DateInput
 from .models import MyUser, UserAddress
@@ -7,7 +6,7 @@ from .models import MyUser, UserAddress
 
 class UserCreateForm(forms.ModelForm):
 
-    password2 = forms.CharField(widget=forms.PasswordInput(), label="Repeat your password")
+    password2 = forms.CharField(widget=forms.PasswordInput(), label="Повторите пароль")
 
     class Meta:
         model = MyUser

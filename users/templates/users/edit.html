@@ -1,24 +1,29 @@
 {% extends 'shop/base.html' %}
 {% block title %}Редактирование профиля{% endblock %}
 {% block content %}
-    <h3>Редактирование профиля</h3>
-    <p><a href="{% url 'users:profile' user.pk %}">Личный кабинет</a></p>
-    <div class="col-sm-10">
-        <form class="order-form" action="." method="post">
-            <div class="col-sm-5">
-                <p>Личные данные</p>
-                {{ form1.as_p }}
-            </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-5">
-                <p>Адрес</p>
-                {{ form2.as_p }}
-            </div>
-            {% csrf_token %}
-            <input type="submit" value="Сохранить">
-        </form>
-        {% if success %}
-            <p>Профиль изменен!</p>
-        {% endif %}
+    <div class="row" style="margin-bottom: 70px">
+        <div class="col-sm-6 col-sm-offset-1" style="background-color: whitesmoke">
+            <h3>Редактирование профиля</h3>
+            <hr>
+            <form class="order-form" action="." method="post">
+                {% csrf_token %}
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-sm-6">
+                        <p style="text-align: center"><strong>Личные данные</strong></p>
+                        {{ form1.as_p }}
+                    </div>
+                    <div class="col-sm-6">
+                        <p style="text-align: center"><strong>Адрес</strong></p>
+                        {{ form2.as_p }}
+                    </div>
+                </div>
+                <input type="submit" value="Сохранить">
+            </form>
+            {% if success %}
+                <p>Профиль изменен!</p>
+            {% endif %}
+            <p><a href="{% url 'users:profile' user.pk %}">Вернуться в Личный кабинет</a>
+            </p>
+        </div>
     </div>
 {% endblock %}

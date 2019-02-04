@@ -208,3 +208,14 @@ ul.my-footer > li a{
 a:hover img.thumbnail {
   border: 0 solid white;
 }
+.hide-text{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 15px
+}
+.hide-text:hover {
+  width: auto;
+  overflow: visible;
+  z-index: 11;
+}

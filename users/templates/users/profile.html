@@ -1,9 +1,10 @@
 {% extends 'shop/base.html' %}
 {% block title %}Личный кабинет{% endblock %}
 {% block content %}
-    <h3>Кабинет Покупателя</h3>
-    <div class="row">
-        <div class="col-sm-3 col-sm-offset-1">
+    <div class="row" style="margin-bottom: 30px">
+        <h3 style="text-align: center">Кабинет Покупателя</h3>
+        <hr style="margin-bottom: 20px">
+        <div class="col-sm-3 col-sm-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Личные данные</strong></div>
                 <table class="table">
@@ -50,12 +51,13 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-4">
-        <ul>
-            <li><a href="{% url 'users:edit_profile' %}">Редактировать профиль</a></li>
-            <li><a href="{% url 'users:change_password' %}">Изменить пароль</a></li>
-            <li><a href="{% url 'users:change_email' %}">Изменить email</a></li>
-        </ul>
+    <div class="row">
+        <div class="col-sm-12" style="text-align: center">
+            <a class="btn btn-default" role="button" href="{% url 'users:edit_profile' %}">Редактировать профиль</a>
+            <a class="btn btn-default" role="button" href="{% url 'users:change_password' %}">Изменить пароль</a>
+            <a class="btn btn-default" role="button" href="{% url 'users:change_email' %}">Изменить email</a>
+        </div>
+        </div>
     </div>
 {% endblock %}
 

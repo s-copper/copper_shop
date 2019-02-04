@@ -21,17 +21,23 @@
             </ul>
         </div>
         <div id="main" class="product_list col-sm-10">
-            <h4 style="margin-left: 30px">{% if category %}{{ category.name }}{% else %}Товары{% endif %}</h4>
+            <h4 style="margin-left: 5%">{% if category %}{{ category.name }}{% else %}Товары{% endif %}</h4>
             <hr style="margin: 0 -15px 0 -15px">
             <div class="items row-fluid">
                 {% for product in products %}
                     <div class="item col-sm-3">
                         <a href="{{ product.get_absolute_url }}" class="item simple">
-                            <img src="
-                                    {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no-img.jpg" %}{% endif %}"
-                                 height="220">
+                            <img height="220" src="
+                                    {% if product.image %}
+                                        {{ product.image.url }}
+                                    {% else %}
+                                        {% static "img/no-img.jpg" %}
+                                    {% endif %}">
                         </a><br>
-                        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+                        <div class="col-sm-12"
+                             style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; height: 15px">
+                            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+                        </div>
                         {{ product.price }} руб.
                     </div>
                 {% endfor %}
