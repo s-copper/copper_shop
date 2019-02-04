@@ -3,6 +3,6 @@ __pycache__/
 *.log
 test*.*
 local_settings.py
-db.sqlite3
+venv/
 pip-log.txt
 pip-delete-this-directory.txt
