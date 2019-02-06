@@ -16,7 +16,7 @@ class UserCreateForm(forms.ModelForm):
             'birthday': DateInput(attrs={'type': 'date'}),
         }
         help_texts = {
-            'username': 'Используйте латинские буквы, цифры и символы "@.+-_"',
+            'username': 'Используйте латинские буквы, цифры и символы "@ . + - _"',
         }
 
     def clean_password(self):
@@ -31,13 +31,12 @@ class UserAddressForm(forms.ModelForm):
         model = UserAddress
         fields = ['city', 'street', 'house_number', 'building_number', 'apartment']
 
-    def clean_(self):
-        if any(self.cleaned_data.values()) and not self.cleaned_data['city'] and not self.cleaned_data['house_number']:
+    def clean(self):
+        if any(self.cleaned_data.values()) and not self.cleaned_data['city'] or not self.cleaned_data['house_number']:
             raise forms.ValidationError(
                 message='Для сохранения адреса, поля "Город" и "Номер дома" не могут быть пустыми'
             )
-        super().clean()
-        # return self.cleaned_data
+        return self.cleaned_data
 
 
 class UserEditForm(forms.ModelForm):
@@ -67,13 +66,13 @@ class UserChangePassword(forms.ModelForm):
             )
         return old_password
 
-    def clean_new_password1(self):
+    def clean_new_password2(self):
         password1 = self.cleaned_data.get('new_password1')
         password2 = self.cleaned_data.get('new_password2')
         if password1 and password2:
             if password1 != password2:
-                raise forms.ValidationError('Пароли не совпадают')
-        return self.cleaned_data['new_password1']
+                raise forms.ValidationError(message='Пароли не совпадают')
+        return self.cleaned_data['new_password2']
 
 
 class UserChangeEmail(forms.ModelForm):

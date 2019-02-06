@@ -58,7 +58,7 @@ class Cart:
         for product_id, value in self.cart.items():
             price = Decimal(value['price'])
             totalissshee += float(price * value['quantity'])
-        return totalissshee
+        return format(totalissshee, '.2f')
 
     def clear(self):
         del self.session[settings.CART_SESSION_ID]

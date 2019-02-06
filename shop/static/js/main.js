@@ -6,7 +6,7 @@ $('#add-to-cart').on('click', function (event) {
         method: "POST",
         url: URL_PRODUCT,
         success: function (data) {
-            console.log(URL_CART)
+            console.log(data);
             $('.cart').html(
                 '<a href="' + URL_CART +'"><span class="glyphicon glyphicon-shopping-cart"></span> <strong>Корзина: ' + data['price'] + ' руб.</strong></a>'
             );

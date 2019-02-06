@@ -1,11 +1,43 @@
 {% extends 'shop/base.html' %}
+{% load widget_tweaks %}
 {% block title %}Вход{% endblock %}
 {% block content %}
     <div class="col-sm-4 col-sm-offset-4" style="background: whitesmoke; margin-top: 30px; margin-bottom: 15%">
         <h3 class="text-center"><strong>Вход</strong></h3>
         <form class="order-form" action="." method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+                        {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+            {% endfor %}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% for field in form.visible_fields %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {% if form.is_bound %}
+                        {% if field.errors %}
+                            {% render_field field class="form-control"; style="border: 1px solid #e50000"  %}
+                            {% for error in field.errors %}
+                                <div class="invalid-feedback" style="color: #e50000">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {% render_field field class="form-control" %}
+                        {% endif %}
+                    {% else %}
+                        {% render_field field class="form-control" %}
+                    {% endif %}
+                    {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
             <input type="submit" value="Войти" class="center-block">
         </form>
         <p class="text-right"><a href="{% url 'users:password_reset' %}">Забыли пароль?</a></p>

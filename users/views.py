@@ -8,6 +8,8 @@ from django.contrib.auth.forms import AuthenticationForm
 
 @csrf_protect
 def create_user(request):
+    if request.user.is_authenticated:
+        return redirect('shop:ProductList')
     if request.method == 'POST':
         form = UserCreateForm(request.POST)
         if form.is_valid():

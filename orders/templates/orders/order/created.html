@@ -1,6 +1,11 @@
 {% extends 'shop/base.html' %}
 {% block title %}Спасибо за заказ{% endblock %}
 {% block content %}
-    <h1>Спасибо за заказ</h1>
-    <p>Номер вашего заказа  <strong>{{ order.id }}</strong></p>
+    <div class="row">
+        <div class="col-sm-3 col-sm-offset-1" style="background-color: whitesmoke">
+            <h2>Спасибо за заказ!</h2>
+            <hr>
+            <p>Номер вашего заказа <strong>{{ order.id }}</strong></p>
+        </div>
+    </div>
 {% endblock %}

@@ -1,23 +1,33 @@
 {% extends 'shop/base.html' %}
+{% load widget_tweaks %}
 {% block title %}Оформление заказа{% endblock %}
 {% block content %}
-    <h1>Оформление заказа</h1>
-    <div class="col-sm-4">
-        <h2>Заполните форму</h2>
-        <form class="order-form" action="." method="post">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <input type="submit" value="Отправить">
-        </form>
-    </div>
-    <div class="order-info col-sm-8">
-        <h2>Ваш заказ</h2>
-        <ul>
-            {% for item in cart %}
-                <li>
-                    {{ item.product.name }} | Количество: {{ item.quantity }} | Цена: {{ item.total_price }}
-                </li>
-            {% endfor %}
-        </ul>
+    <div class="row" style="margin-bottom: 70px">
+        <div class="col-sm-12">
+            <h3>Оформление заказа</h3>
+            <hr>
+            <div class="col-sm-3" style="background-color: whitesmoke">
+                <h4>Заполните форму</h4>
+                <form action="." method="post">
+                    {% csrf_token %}
+                    {% for field in form.visible_fields %}
+                        <div class="form-group form-group-sm">
+                            <label style="font-size: 12px; margin-top: -5px;">{{ field.label_tag }}</label>
+                            {% render_field field class="form-control"; style="margin-bottom: -9px; margin-top: -7px" %}
+                        </div>
+                    {% endfor %}
+                    <input type="submit" value="Отправить">
+                </form>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+                <h4>Ваш заказ</h4>
+                <ol>
+                    {% for item in cart %}
+                        <li>{{ item.product.name }}, {{ item.quantity }} шт.</li>
+                    {% endfor %}
+                </ol>
+                <p>Сумма к оплате: {{ cart.get_total_price }}</p>
+            </div>
+        </div>
     </div>
 {% endblock %}
