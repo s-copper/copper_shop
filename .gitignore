@@ -7,3 +7,4 @@ venv/
 pip-log.txt
 pip-delete-this-directory.txt
 *.sqlite3
+media/
