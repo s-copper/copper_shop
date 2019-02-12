@@ -54,7 +54,7 @@
                         {% if cart|length > 0 %}
                             <a href="{% url "cart:CartDetail" %}">
                                 <span class="glyphicon glyphicon-shopping-cart"></span> <strong>Корзина
-                                : {{ cart.get_total_price }} руб.</strong>
+                                : {{ cart.get_total_price_view }} руб.</strong>
                             </a>
                         {% else %}
                             <p class="navbar-text"><span class="glyphicon glyphicon-shopping-cart"></span><strong>
