@@ -16,7 +16,13 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a href="{% url 'shop:ProductList' %}" class="navbar-left"><img alt="Brand"
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            <a href="{% url 'shop:ProductList' %}" class="navbar-left"><img style="width: 30px" alt="Brand"
                                                                             src="{% static 'img/favicon.png' %}"></a>
             <a class="navbar-brand" href="{% url 'shop:ProductList' %}">Copper Shop</a>
         </div>
@@ -50,18 +56,10 @@
                     {% endif %}
                 </li>
                 <li class="cart">
-                    {% with total_items=cart|length %}
-                        {% if cart|length > 0 %}
-                            <a href="{% url "cart:CartDetail" %}">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> <strong>Корзина
-                                : {{ cart.get_total_price_view }} руб.</strong>
-                            </a>
-                        {% else %}
-                            <p class="navbar-text"><span class="glyphicon glyphicon-shopping-cart"></span><strong>
-                                Корзина пуста </strong></p>
-
-                        {% endif %}
-                    {% endwith %}
+                    <a {% if cart|length < 1%} class="disabled2" {% endif %} href="{% url "cart:CartDetail" %}">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> <strong>Корзина
+                        <span class="cost">{% if cart|length < 1%} пуста{% else %}: {{ cart.get_total_price_view }} руб.{% endif %}</span></strong>
+                    </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -74,15 +72,15 @@
     {% block footer %}{% endblock %}
 </div>
     <div class="footer-fix">
-        <div class="col-sm-12">
-            <div class="col-sm-4">
+        <div class="col-sm-12 col-xs-12">
+            <div class="col-sm-4 col-xs-7">
                 <ul class="my-footer">
                     <li id="test"><a class="text-muted" href="#">Контакты</a></li>
                     <li><a class="text-muted" href="#">Доставка и оплата</a></li>
                     <li><a class="text-muted" href="#">О магазине</a></li>
                 </ul>
             </div>
-            <div class="col-sm-4 col-sm-offset-4">
+            <div class="col-sm-4 col-sm-offset-4 col-xs-5 col-xs-offset-0">
                 <p class="text-muted pull-right">© 2019 Copper Shop. All rights reserved</p>
             </div>
         </div>

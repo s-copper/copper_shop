@@ -216,3 +216,8 @@ a:hover img.thumbnail {
   overflow: visible;
   z-index: 11;
 }
+a.disabled2 {
+pointer-events: none; /* делаем элемент неактивным для взаимодействия */
+cursor: default; /*  курсор в виде стрелки */
+color: grey;/* цвет текста серый */
+}

@@ -32,7 +32,7 @@ class UserAddressForm(forms.ModelForm):
         fields = ['city', 'street', 'house_number', 'building_number', 'apartment']
 
     def clean(self):
-        if any(self.cleaned_data.values()) and not self.cleaned_data['city'] or not self.cleaned_data['house_number']:
+        if any(self.cleaned_data.values()) and (not self.cleaned_data['city'] or not self.cleaned_data['house_number']):
             raise forms.ValidationError(
                 message='Для сохранения адреса, поля "Город" и "Номер дома" не могут быть пустыми'
             )

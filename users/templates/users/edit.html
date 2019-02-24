@@ -3,7 +3,7 @@
 {% block title %}Редактирование профиля{% endblock %}
 {% block content %}
     <div class="row" style="margin-bottom: 70px">
-        <div class="col-sm-6 col-sm-offset-1" style="background-color: whitesmoke">
+        <div class="col-sm-6 col-xs-6 col-xs-offset-1 col-sm-offset-1" style="background-color: whitesmoke">
             <h3>Редактирование профиля</h3>
             <hr>
             {% if success %}
@@ -35,22 +35,10 @@
                             <div class="form-group">
                                 {{ field.label_tag }}
                                 {% if form2.is_bound %}
-{#                                    {% if field.errors %}#}
-{#                                        {% render_field field class="form-control"; style="border: 1px solid #e50000"  %}#}
-{#                                        {% for error in field.errors %}#}
-{#                                            <div class="invalid-feedback" style="color: #e50000">#}
-{#                                                {{ error }}#}
-{#                                            </div>#}
-{#                                        {% endfor %}#}
-{#                                    {% else %}#}
-                                        {% render_field field class="form-control" %}
-{#                                    {% endif %}#}
+                                    {% render_field field class="form-control" %}
                                 {% else %}
                                     {% render_field field class="form-control" %}
                                 {% endif %}
-{#                                {% if field.help_text %}#}
-{#                                    <small class="form-text text-muted">{{ field.help_text }}</small>#}
-{#                                {% endif %}#}
                             </div>
                         {% endfor %}
                     </div>

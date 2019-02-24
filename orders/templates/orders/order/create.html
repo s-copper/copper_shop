@@ -6,7 +6,7 @@
         <div class="col-sm-12">
             <h3>Оформление заказа</h3>
             <hr>
-            <div class="col-sm-3" style="background-color: whitesmoke">
+            <div class="col-sm-3 col-xs-7 col-xs-offset-1" style="background-color: whitesmoke">
                 <h4>Заполните форму</h4>
                 <form action="." method="post">
                     {% csrf_token %}
@@ -19,7 +19,7 @@
                     <input type="submit" value="Отправить">
                 </form>
             </div>
-            <div class="col-sm-4 col-sm-offset-1">
+            <div class="col-sm-4 col-xs-7 col-xs-offset-1 col-sm-offset-1">
                 <h4>Ваш заказ</h4>
                 <ol>
                     {% for item in cart %}

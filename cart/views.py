@@ -18,15 +18,19 @@ def cart_add(request, product_id):
         return JsonResponse({'price': price})
 
 
-def cart_change_quantity(request, product_id):
+def cart_change_quantity(request):
     cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    form = CartUpdateForm(data=request.POST)
-    if form.is_valid():
-        cd = form.cleaned_data
-        cart.add(product=product, quantity=cd['quantity'],
-                 update_quantity=cd['update'])
-    return redirect('cart:CartDetail')
+    book_id = request.POST.get('id')
+    quantity = int(request.POST.get('count'))
+    product = get_object_or_404(Product, id=book_id)
+    cart.add(product=product, quantity=quantity, update_quantity=True)
+    total_price = cart.get_total_price_view()
+    book_total_price = format(product.price * quantity, '.2f')
+    return JsonResponse({
+        'total_price': total_price,
+        'book_total_price': book_total_price,
+        'id': book_id,
+    })
 
 
 def cart_remove(request, product_id):

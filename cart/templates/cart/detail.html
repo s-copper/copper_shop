@@ -26,16 +26,23 @@
                             </a>
                         </td>
                         <td>{{ product.name }}</td>
-                        <td>
-                            <form action="{% url "cart:cart_change_quantity" product.id %}" method="post" class="add">
-                                {{ item.update_quantity_form.quantity }}
-                                {{ item.update_quantity_form.update }}
-                                {% csrf_token %}
-                                <input type="submit" value="Изменить">
-                            </form>
+                        <td width="10%">
+                            <div class="input-group">
+                              <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default btn-number btn-sm" data-type="minus" data-field="quant">
+                                      <span class="glyphicon glyphicon-minus"></span>
+                                  </button>
+                              </span>
+                              <input data-id="{{ product.id }}" style="min-width:4em" type="text" name="quant" class="form-control input-number input-sm text-center" value="{{ item.quantity }}" min="1" max="30" maxlength="2">
+                              <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default btn-number btn-sm" data-type="plus" data-field="quant">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                  </button>
+                              </span>
+                            </div>
                         </td>
                         <td class="num">{{ item.price }} руб.</td>
-                        <td class="num">{{ item.total_price }} руб.</td>
+                        <td data-id="{{ product.id }}" class="num">{{ item.total_price }} руб.</td>
                          <td><a href="{% url "cart:CartRemove" product.id %}">Удалить</a></td>
                     </tr>
                 {% endwith %}
@@ -43,7 +50,7 @@
             <tr class="total">
                 <td>Всего</td>
                 <td colspan="4"></td>
-                <td class="num">{{ cart.get_total_price }} руб.</td>
+                <td id="total-price" class="num">{{ cart.get_total_price }} руб.</td>
             </tr>
         </tbody>
     </table>
@@ -52,4 +59,11 @@
         <a href="{% url "orders:OrderCreate" %}" class="btn">Оформить покупки</a>
     </p>
 {% endblock %}
-
+{% block bottom_script %}
+    {{ block.super }}
+    <script type="application/javascript">
+        var URL_QUANTITY="{% url "cart:cart_change_quantity" %}";
+    </script>
+    <script src="{% static 'js/plus-minus.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
